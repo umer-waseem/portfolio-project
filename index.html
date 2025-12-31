@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio | Your Name</title>
+    <style>
+        /* CSS Variables for easy branding updates */
+        :root {
+            --primary-color: #2563eb;
+            --dark-color: #1e293b;
+            --light-bg: #f8fafc;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                        url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Portfolio Grid */
+        .container {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PORTFOLIO.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Hi, I'm [Your Name]</h1>
+        <p>A passionate Full-Stack Developer specializing in building clean, functional, and user-centric digital experiences.</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <div class="container" id="projects">
+        <div class="section-title">
+            <h2>Selected Projects</h2>
+            <p>A showcase of my recent technical work</p>
+        </div>
+
+        <div class="project-grid">
+            <div class="card">
+                <div style="height: 200px; background: #ddd;"></div> <div class="card-content">
+                    <h3>E-Commerce Platform</h3>
+                    <p>Built with React and Node.js. Features real-time inventory management and Stripe integration.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="height: 200px; background: #ccc;"></div> <div class="card-content">
+                    <h3>Data Visualization Dashboard</h3>
+                    <p>Interactive dashboard using D3.js and Python to visualize complex financial datasets.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="height: 200px; background: #bbb;"></div> <div class="card-content">
+                    <h3>Task Management API</h3>
+                    <p>A secure RESTful API built with Express, featuring JWT authentication and MongoDB.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <h3>Get In Touch</h3>
+        <p>Email: hello@yourdomain.com</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: #94a3b8;">&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
