@@ -1,219 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio | Your Name</title>
+    <title>Umer Waseem | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* CSS Variables for easy branding updates */
         :root {
-            --primary-color: #2563eb;
-            --dark-color: #1e293b;
-            --light-bg: #f8fafc;
-            --text-main: #334155;
-            --text-light: #64748b;
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
         }
 
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--light-bg);
+            background-color: var(--bg-light);
             color: var(--text-main);
-            line-height: 1.6;
         }
 
-        /* Navigation */
+        /* Navigation - Glassmorphism */
         nav {
-            background: #fff;
-            padding: 1rem 10%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
             z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark-color);
+            color: var(--text-main);
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary-color);
+            color: var(--accent);
         }
 
         /* Hero Section */
         .hero {
-            height: 80vh;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top right, #e0e7ff 0%, #ffffff 50%);
             text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
-                        url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            padding: 0 20px;
+            padding: 0 10%;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin-bottom: 2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
         }
 
         .btn {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.2s;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid #cbd5e1;
         }
 
         .btn:hover {
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
         }
 
-        /* Portfolio Grid */
+        /* Project Cards */
         .container {
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
         }
 
         .card {
             background: white;
-            border-radius: 8px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: 0.4s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-img {
+            height: 220px;
+            background: #e2e8f0;
+            position: relative;
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .card-content h3 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: #eff6ff;
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 5px;
         }
 
         /* Footer */
         footer {
-            background: var(--dark-color);
+            background: var(--primary);
             color: white;
+            padding: 5rem 10% 2rem;
             text-align: center;
-            padding: 3rem 0;
-            margin-top: 4rem;
         }
 
-        /* Responsive */
+        .social-links {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.2rem; }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
-        <div class="logo">PORTFOLIO.</div>
+        <div class="logo">UMER<span>WASEEM</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Work</a></li>
+            <li><a href="#projects">Portfolio</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section class="hero" id="home">
-        <h1>Hi, I'm Umer Waseem</h1>
-        <p>A passionate Full-Stack Developer specializing in building clean, functional, and user-centric digital experiences.</p>
-        <a href="#projects" class="btn">View My Work</a>
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Building Next-Gen <br>Digital Experiences.</h1>
+            <p>I'm a Full-Stack Engineer who loves turning complex problems into beautiful, scalable, and user-friendly
+                applications.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View Portfolio</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
     </section>
 
     <div class="container" id="projects">
-        <div class="section-title">
-            <h2>Selected Projects</h2>
-            <p>A showcase of my recent technical work</p>
+        <div class="section-header" data-aos="fade-up">
+            <h2>Featured Projects</h2>
+            <p>Selected work that showcases my technical expertise.</p>
         </div>
 
         <div class="project-grid">
-            <div class="card">
-                <div style="height: 200px; background: #ddd;"></div> <div class="card-content">
-                    <h3>E-Commerce Platform</h3>
-                    <p>Built with React and Node.js. Features real-time inventory management and Stripe integration.</p>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+                    <br>
+                    <h3>Cloud E-Commerce</h3>
+                    <p>A full-scale online store with microservices architecture, AWS integration, and real-time
+                        analytics.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">Explore Project
+                        <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
-            <div class="card">
-                <div style="height: 200px; background: #ccc;"></div> <div class="card-content">
-                    <h3>Data Visualization Dashboard</h3>
-                    <p>Interactive dashboard using D3.js and Python to visualize complex financial datasets.</p>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img"></div>
+                <div class="card-content">
+                    <div>
+                        <span class="tag">Python</span>
+                        <span class="tag">D3.js</span>
+                    </div>
+                    <br>
+                    <h3>FinTech Dashboard</h3>
+                    <p>Advanced financial visualization tool for tracking stock market trends with AI-driven
+                        predictions.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">Explore Project
+                        <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
-            <div class="card">
-                <div style="height: 200px; background: #bbb;"></div> <div class="card-content">
-                    <h3>Task Management API</h3>
-                    <p>A secure RESTful API built with Express, featuring JWT authentication and MongoDB.</p>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img"></div>
+                <div class="card-content">
+                    <div>
+                        <span class="tag">Express</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <br>
+                    <h3>TaskFlow API</h3>
+                    <p>Enterprise-grade task management system with secure JWT authentication and role-based access.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">Explore Project
+                        <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
     <footer id="contact">
-        <h3>Get In Touch</h3>
-        <p>Email: hello@yourdomain.com</p>
-        <p style="margin-top: 1rem; font-size: 0.8rem; color: #94a3b8;">&copy; 2025 Your Name. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>Email: hello@umerwaseem.dev</p>
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.6;">&copy; 2026 Umer Waseem. Built with Passion.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
+
 </html>
