@@ -8,9 +8,9 @@ pipeline {
     }
 
     environment { 
-        REPO_URL      = 'https://github.com/AyeshaTariq11/Portfolio' 
+        REPO_URL      = 'https://github.com/umer-waseem/portfolio-project' 
         SONARQUBE_ENV = 'SonarQube-Server' 
-        DOCKER_SERVER = 'ubuntu@ip-172-31-20-138' 
+        DOCKER_SERVER = 'ubuntu@ip-172-31-92-79' 
         SONAR_SCANNER_OPTS = "-Xmx512m" 
     } 
 
